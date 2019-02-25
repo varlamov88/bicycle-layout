@@ -124,6 +124,39 @@ body {
 		text-transform: uppercase;
 		letter-spacing: 2.6px;
 		text-decoration: none;
+		transition: $hover-effect;
+		&:hover {
+			color: $main-color;
+		}
+	}
+}
+
+.socials {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&__item {
+		margin: 0 7.5px;
+	}
+	&__link {
+		width: 35px;
+		height: 35px;
+		background-color: $blue;
+		border-radius: 50%;
+		color: $white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		&_fb {
+			background-color: #537bbd;
+		}
+		&_printerest {
+			background-color: #eb5755;
+		}
 	}
 }
 
@@ -163,10 +196,7 @@ body {
 			left: 50%;
 			transform: translate(-50%);
 		}
-	}
-	&__text {
-		font-size: 18px;
-	}
+	}	
 }
 
 .advantage {
@@ -248,7 +278,8 @@ body {
 
 .carousel {
 	position: relative;
-	padding-bottom: 61px;;
+	padding-bottom: 61px;
+	padding-top: 60px;
 	.section__inner::before {		
 		content: "\f099";
 	    font-family: 'Font Awesome 5 Brands';
@@ -264,10 +295,9 @@ body {
 		text-align: center;
 	}
 	&__text {
-		font-size: 24px;
 		font-style: italic;
 		line-height: 1.4;
-		margin-bottom: 89px;;;
+		margin-bottom: 89px;
 	}
 	&__heading {
 		text-transform: none;
@@ -306,6 +336,7 @@ body {
 		text-decoration: none;
 		position: relative;
 		overflow: hidden;
+		background-color: $white;
 		&-img {
 			min-width: 100%;
 			min-height: 100%;
@@ -346,21 +377,24 @@ body {
 		display: flex;
 	    margin: auto;
 	    padding: 16px;
+	    &:hover {
+	    	background-color: $accent;
+	    }
 	}
 }
-/*
 
-
-
-*/
 .footer {
+	padding: 80px $padding-x;
+	background-color: $light-gray;
 	&__inner {
-		flex-direction: row;
-		text-align: left;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
 	}
 	&__info {
-		width: 33.3%;
-		margin-bottom: 0;
+		margin-bottom: 30px;
 		&-head {
 			font-size: 16px;
 			font-weight: 700;
@@ -370,22 +404,64 @@ body {
 			font-size: 14px;
 		}
 	}
-	&__socials {
-		width: 33.3%;
+}
+
+@media screen and (min-width: 998px) {
+	.hidden-sm {
+		display: inherit;
+	}
+	.hidden-lg {
+		display: none;
+	}
+	.section {
+		padding-top: 183px;
+		padding-bottom: 134px;
+	}
+	.header {
+		height: 150px;
 		display: flex;
 		justify-content: center;
-		align-items: center;;
+		padding-top: 0;
+	}
+	.banner {
+		margin-top: -150px;
+	}
+	.generation__text {
+		font-size: 18px;
+	}
+	.carousel__text {
+		font-size: 24px;
+	}
+	.advantage__item {
+		&-3,
+		&-6,
+		&-8,
+		&-10 {
+			display: none;
+		}
+	}
+	.footer {
+		&__inner {
+			flex-direction: row;
+			text-align: left;
+			justify-content: flex-start;
+		}
+		&__info {
+			margin-bottom: 0;
+			width: 33.3%;
+		}
+		&__socials {
+			width: 33.3%;
+		}
 	}
 }
 
-
-
+/**/
 @supports (display:grid) {
-	@media screen and (min-width: 998px) {
+	@media screen and (min-width: 998px) {		
 		.advantage {
 			display: grid;
 			grid-template-columns: repeat(6, 1fr);
-		    grid-auto-rows: 200px;
 		    grid-auto-rows: minmax(200px, 1fr);
 		    grid-auto-flow: row dense;
 			&__item {
@@ -405,6 +481,12 @@ body {
 					grid-column: 5 / span 2;
 					grid-row: span 3;
 				}
+				&-3,
+				&-6,
+				&-8,
+				&-10 {
+					display: block;
+				}	
 			}
 			&__img {
 				min-height: auto;
@@ -434,10 +516,9 @@ body {
 
 		.shop {
 			&__list {
-				height: 534px;
 				display: grid;
 				grid-template-columns: repeat(6, 1fr);
-			    grid-template-rows: 1fr 1fr;
+			    grid-auto-rows: 267px;
 			    grid-auto-flow: row dense;
 			}
 			&__item {	
@@ -467,25 +548,4 @@ body {
 		}
 	}
 }
-
-@media screen and (min-width: 998px) {
-	.hidden-sm {
-		display: inherit;
-	}
-	.hidden-lg {
-		display: none;
-	}
-	.section {
-		padding-top: 183px;
-		padding-bottom: 134px;
-	}
-	.header {
-		height: 150px;
-		display: flex;
-		justify-content: center;
-		padding-top: 0;
-	}
-	.banner {
-		margin-top: -150px;
-	}
-}
+/**/
