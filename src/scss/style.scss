@@ -2,10 +2,10 @@
 @import "font-face";
 @import "variables";
 
-@include font-face("Lato", "../fonts/Lato/latoregular", 400);
 @include font-face("Lato", "../fonts/Lato/latobold", 700);
-@include font-face("Lato", "../fonts/Lato/latoitalic", 400, "italic");
+@include font-face("Lato", "../fonts/Lato/latoitalic", 400, italic);
 @include font-face("Lato", "../fonts/Lato/latolight", 300);
+@include font-face("Lato", "../fonts/Lato/latoregular");
 
 %centered {
 	position: absolute;
@@ -26,6 +26,8 @@ body {
 	line-height: 1.9;
 	font: {
 		family: $main-font;
+		weight: 400;
+		style: normal;
 		size: 16px; 
 	}
 }
@@ -128,6 +130,47 @@ body {
 		&:hover {
 			color: $main-color;
 		}
+	}
+}
+
+.form {
+	width: 100%;
+	&__success-message {
+		display: none;
+		font-size: 22px;
+		text-align: center;
+		margin-bottom: 30px;
+		&.show {
+			display: block;
+		}
+	}
+	&__inner {
+		display: flex;
+	}
+	&__field {
+		background-color: $white;
+		border: 1px solid $gray;
+		outline: none;
+		font-size: 20px;
+		font-style: italic;
+		color: $black;
+		padding: 20px 20px;
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+		&.error {
+			background-color: pink;
+		}
+	}
+	&__textarea {
+		resize: none;
+	}	
+	&__submit {
+		width: 125px;
+		height: 69px;
+		font-weight: 300;
+		font-size: 24px;
+		text-transform: uppercase;
 	}
 }
 
@@ -278,7 +321,7 @@ body {
 
 .carousel {
 	position: relative;
-	padding-bottom: 61px;
+	padding-bottom: 60px;
 	padding-top: 60px;
 	.section__inner::before {		
 		content: "\f099";
@@ -377,9 +420,30 @@ body {
 		display: flex;
 	    margin: auto;
 	    padding: 16px;
+	    width: 100%;
+	    max-width: 300px;
 	    &:hover {
 	    	background-color: $accent;
 	    }
+	}
+}
+
+.subscribe {
+	display: flex;
+	justify-content: center;
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 533px;
+	}
+	&__head {
+		font-size: 24px;
+		font-style: italic;
+		margin: 24px 0;
+	}
+	&__form {
+
 	}
 }
 
@@ -429,16 +493,28 @@ body {
 	.generation__text {
 		font-size: 18px;
 	}
-	.carousel__text {
-		font-size: 24px;
-	}
-	.advantage__item {
-		&-3,
-		&-6,
-		&-8,
-		&-10 {
-			display: none;
+	.carousel {
+		padding-bottom: 60px;
+		&__text {
+			font-size: 24px;
 		}
+	}
+	.advantage {
+		&__item {
+			&-3,
+			&-6,
+			&-8,
+			&-10 {
+				display: none;
+			}
+		}
+		&__section {
+			position: relative;
+   			z-index: 10;
+		}
+	}
+	.subscribe {
+		padding-top: 109px;
 	}
 	.footer {
 		&__inner {
@@ -492,8 +568,7 @@ body {
 				min-height: auto;
 			}
 			&__section {
-				padding-left: 60px;
-				padding-right: 60px;
+				padding: 120px 60px 60px;
 				grid-row: span 2;
 				&::after {
 					content: "";
