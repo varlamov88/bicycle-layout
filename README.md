@@ -1,1 +1,2 @@
-# start-files
+npm i
+npm run serve
